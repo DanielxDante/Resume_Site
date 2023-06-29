@@ -1,0 +1,31 @@
+body {
+  background-color: #FFFAFA;
+  max-width: 50rem;
+  margin: auto;
+  font-family: Times, "Times New Roman", Georgia, serif;
+}
+
+h3 {
+  text-align: center;
+}
+
+.summary {
+  text-align: center;
+}
+
+.education {
+  text-align: center;
+}
+
+.jobs {
+  list-style: upper-roman;
+}
+
+.projects {
+  list-style: lower-greek;
+}
+
+.contact {
+  color: #0078B4;
+  text-align: center;
+}
