@@ -5,7 +5,6 @@ import { Roboto_Mono} from 'next/font/google'
 import { Navbar } from '@/components/navbar/Navbar'
 import { Footer } from '@/components/footer/Footer'
 
-
 const inter = Roboto_Mono({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
