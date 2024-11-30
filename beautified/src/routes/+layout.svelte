@@ -52,10 +52,33 @@
 		}
 	}
 
+	function handleTouchStart(event: TouchEvent) {
+		const touchStartY = event.touches[0].clientY;
+
+		function handleTouchMove(event: TouchEvent) {
+			const touchEndY = event.touches[0].clientY;
+			const direction = touchStartY > touchEndY ? 1 : -1;
+
+			let newActiveSection = activeSection + direction;
+			newActiveSection = Math.max(0, Math.min(newActiveSection, sections.length - 1));
+
+			if (newActiveSection !== activeSection) {
+				activeSection = newActiveSection;
+				goto(sections[activeSection].route, { replaceState: true });
+			}
+
+			window.removeEventListener('touchmove', handleTouchMove);
+		}
+
+		window.addEventListener('touchmove', handleTouchMove, { passive: false });
+	}
+
 	onMount(() => {
 		window.addEventListener('wheel', handleWheel, { passive: false });
+		window.addEventListener('touchstart', handleTouchStart, { passive: false });
 		return () => {
 			window.removeEventListener('wheel', handleWheel);
+			window.removeEventListener('touchstart', handleTouchStart);
 		};
 	});
 </script>
