@@ -1,10 +1,10 @@
-import { SECRET_SANITY_STUDIO_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 export const load = () => {
-    if (!import.meta.env.PROD && SECRET_SANITY_STUDIO_URL) {
+    if (!import.meta.env.PROD && env.SECRET_SANITY_STUDIO_URL) {
       return { 
         studio: {
-          url: SECRET_SANITY_STUDIO_URL
+          url: env.SECRET_SANITY_STUDIO_URL
         }
       };
     } else {
