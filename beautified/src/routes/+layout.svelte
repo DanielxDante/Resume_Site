@@ -1,8 +1,63 @@
 <script lang="ts">
-	import Header from './Header.svelte';
+	import Header from '../lib/components/Header.svelte';
 	import '../app.css';
 
 	let { children } = $props();
+
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+
+	let activeSection = 0;
+	const sections = [
+		{ 
+			route: '/', 
+			title: 'Introduction', 
+			content: 'Welcome to my portfolio',
+			background: 'bg-gradient-to-r from-blue-500 to-purple-600'
+		},
+		{ 
+			route: '/about', 
+			title: 'Projects', 
+			content: 'Featured work and achievements',
+			background: 'bg-gradient-to-r from-green-400 to-blue-500'
+		},
+		{ 
+			route: '/sverdle', 
+			title: 'About Me', 
+			content: 'My skills, experience, and journey',
+			background: 'bg-gradient-to-r from-yellow-400 to-red-500'
+		}
+	];
+
+	function handleWheel(event: any) {
+		// Prevent default scrolling
+		event.preventDefault();
+
+		// Determine scroll direction
+		const direction = event.deltaY > 0 ? 1 : -1;
+		
+		// Calculate new active section
+		let newActiveSection = activeSection + direction;
+		
+		// Ensure we stay within section bounds
+		newActiveSection = Math.max(0, Math.min(newActiveSection, sections.length - 1));
+		
+		if (newActiveSection !== activeSection) {
+			activeSection = newActiveSection;
+			
+			// Navigate to new route
+			goto(sections[activeSection].route, { 
+				replaceState: true 
+			});
+		}
+	}
+
+	onMount(() => {
+		window.addEventListener('wheel', handleWheel, { passive: false });
+		return () => {
+			window.removeEventListener('wheel', handleWheel);
+		};
+	});
 </script>
 
 <div class="app">
@@ -14,7 +69,7 @@
 
 	<footer>
 		<p>
-			visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to learn about SvelteKit
+			@{new Date().getFullYear()} Daniel Tay. All rights reserved.
 		</p>
 	</footer>
 </div>
@@ -45,7 +100,7 @@
 		padding: 12px;
 	}
 
-	footer a {
+	footer p {
 		font-weight: bold;
 	}
 

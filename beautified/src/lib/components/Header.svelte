@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+
+	const svelteLogo = '/svelte-logo.svg';
+	const githubLogo = '/github.svg';
 </script>
 
 <header>
 	<div class="corner">
 		<a href="https://svelte.dev/docs/kit">
-			<img src={logo} alt="SvelteKit" />
+			<img src={svelteLogo} alt="SvelteKit" />
 		</a>
 	</div>
 
@@ -23,7 +24,7 @@
 				<a href="/about">About</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
+				<a href="/sverdle">Contact Me</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
@@ -33,7 +34,7 @@
 
 	<div class="corner">
 		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
+			<img src={githubLogo} alt="GitHub" />
 		</a>
 	</div>
 </header>
