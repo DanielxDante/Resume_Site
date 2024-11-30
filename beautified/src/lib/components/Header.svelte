@@ -1,14 +1,24 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { melt, createAvatar } from '@melt-ui/svelte';
 
-	const svelteLogo = '/svelte-logo.svg';
 	const githubLogo = '/github.svg';
+
+	const { elements: { image, fallback }} = createAvatar({
+		src: 'https://avatars.githubusercontent.com/u/1162160?v=4',
+	});
+
+	let darkMode = false;
+	function toggleDarkMode() {
+		darkMode = !darkMode;
+		document.documentElement.classList.toggle('dark-mode', darkMode);
+	}
 </script>
 
-<header>
+<header class="sticky top-0 z-50">
 	<div class="corner">
-		<a href="https://svelte.dev/docs/kit">
-			<img src={svelteLogo} alt="SvelteKit" />
+		<a href="https://github.com/sveltejs/kit">
+			<img src={githubLogo} alt="GitHub" />
 		</a>
 	</div>
 
@@ -24,7 +34,7 @@
 				<a href="/about">About</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Contact Me</a>
+				<a href="/sverdle">Contact</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
@@ -33,10 +43,16 @@
 	</nav>
 
 	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={githubLogo} alt="GitHub" />
-		</a>
+		<!-- <button on:click={toggleDarkMode}>
+			{darkMode ? 'Light Mode' : 'Dark Mode'}
+		</button> -->
+		<img
+			use:melt={$image}
+			alt="Avatar"
+			class="h-full w-full rounded-[inherit]"
+		/>
 	</div>
+		
 </header>
 
 <style>
@@ -126,5 +142,11 @@
 
 	a:hover {
 		color: var(--color-theme-1);
+	}
+
+	:global(.dark-mode) {
+				--background: rgba(0, 0, 0, 0.7);
+				--color-text: #fff;
+				--color-theme-1: #ff3e00;
 	}
 </style>

@@ -3,10 +3,10 @@
   	import Scene from '$lib/components/Scene.svelte'
 </script>
 
-<svelte:head>
+<!-- <svelte:head>
 	<title>Daniel Tay</title>
 	<meta name="description" content="Svelte demo app" />
-</svelte:head>
+</svelte:head> -->
 
 <section>
 	<h1>Welcome to my portfolio</h1>

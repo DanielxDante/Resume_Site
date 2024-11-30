@@ -1,6 +1,9 @@
-# sv
+# Technologies 
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+- Sveltekit
+- MeltUI
+- Threlte
+- Sanity CMS
 
 ## Creating a project
 
