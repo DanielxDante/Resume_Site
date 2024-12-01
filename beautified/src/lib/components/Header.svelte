@@ -1,152 +1,54 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { melt, createAvatar } from '@melt-ui/svelte';
+	export let sections;
+	import { onMount } from 'svelte';
 
-	const githubLogo = '/github.svg';
+	let currentHash = '';
 
-	const { elements: { image, fallback }} = createAvatar({
-		src: 'https://avatars.githubusercontent.com/u/1162160?v=4',
+	const updateHash = () => {
+		currentHash = window.location.hash || '#section1';
+	};
+
+	onMount(() => {
+		updateHash();
+		window.addEventListener('hashchange', updateHash);
+
+		return () => {
+		window.removeEventListener('hashchange', updateHash);
+		};
 	});
-
-	let darkMode = false;
-	function toggleDarkMode() {
-		darkMode = !darkMode;
-		document.documentElement.classList.toggle('dark-mode', darkMode);
-	}
 </script>
 
-<header class="sticky top-0 z-50">
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={githubLogo} alt="GitHub" />
+<header class="flex justify-between backdrop-blur sticky top-0 z-50 pt-3 border-b border-white w-[90%] mx-auto">
+	<div class="flex">
+		<a href="/" class="flex items-center justify-center mr-3">
+			<span class="font-bold text-white tracking-tighter" style="font-family: 'Migra'">
+				Daniel Tay
+			</span>
 		</a>
+		<span class="flex items-center justify-center font-bold text-white tracking-tight" style="font-family: 'Neue Montreal'">
+			DevSecOps Enthusiast
+		</span>
 	</div>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Contact</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
-
-	<div class="corner">
-		<!-- <button on:click={toggleDarkMode}>
-			{darkMode ? 'Light Mode' : 'Dark Mode'}
-		</button> -->
-		<img
-			use:melt={$image}
-			alt="Avatar"
-			class="h-full w-full rounded-[inherit]"
-		/>
+	<div class="flex w-auto">
+		<nav class="flex justify-end bg-transparent">
+			<ul class="flex items-center justify-center list-none relative bg-transparent p-0 m-0 h-12">
+				{#each sections as section}
+					<li class="relative h-full">
+						<a 
+							href={section.route}
+							aria-current={currentHash === section.route ? 'page' : undefined}
+							class="flex h-full items-center py-0 px-2 text-white text-sm font-bold tracking-wider lowercase transition-colors duration-200 ease-linear hover:underline aria-[current=page]:text-cyan-300"
+							style="font-family: 'Neue Montreal'"
+						>
+							{section.title}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</nav>
 	</div>
-		
 </header>
 
 <style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--color-theme-1);
-	}
-
-	:global(.dark-mode) {
-				--background: rgba(0, 0, 0, 0.7);
-				--color-text: #fff;
-				--color-theme-1: #ff3e00;
-	}
 </style>
