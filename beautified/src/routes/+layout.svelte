@@ -90,7 +90,7 @@
 	{#key $page.url.pathname}
 		<main
 			in:fade="{{ duration: 300, delay: 100 }}"
-			class="flex flex-col p-1 w-[40%] mb-auto mx-auto box-border"
+			class="flex flex-col p-1 w-[80%] sm:w-[60%] mb-auto mx-auto box-border"
 		>
 			{@render children()}
 		</main>

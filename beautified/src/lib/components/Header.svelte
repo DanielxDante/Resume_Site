@@ -25,7 +25,7 @@
 				Daniel Tay
 			</span>
 		</a>
-		<span class="flex items-center justify-center font-bold text-white tracking-tight" style="font-family: 'Neue Montreal'">
+		<span class="hidden sm:flex items-center justify-center font-bold text-white tracking-tight" style="font-family: 'Neue Montreal'">
 			DevSecOps Enthusiast
 		</span>
 	</div>
