@@ -98,13 +98,13 @@
 
 	<footer class="flex flex-col items-center justify-center bg-transparent py-12 sm:py-3 border-t border-white w-[90%] mx-auto">
 		<p
-			class="font-bold"
+			class="font-bold text-sm sm:text-base"
 			style="font-family: 'Neue Montreal'"
 		>
 			Powered by Sveltekit, Threlte, MeltUI, and Sanity.
 		</p>
 		<p 
-			class="font-bold"
+			class="font-bold text-sm sm:text-base"
 			style="font-family: 'Neue Montreal'"
 		>
 			@{new Date().getFullYear()} Daniel Tay. All Rights Reserved.
