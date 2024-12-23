@@ -41,11 +41,11 @@
 
 <section id="projects" class="scroll-mt-16 flex flex-col items-center justify-center h-full py-10 border-b-2 border-dashed">
 	<span class="text-xl font-bold border-b-4 border-zinc-600 self-start" style="font-family: 'Neue Montreal'">
-		Academic Projects
+		Projects
 	</span>
 	<!-- JustTravel -->
 	<div class="py-3 text-center">
-		<img src="/justtravel.jpg" alt="JustTravel Home Page" class="rounded-lg mb-2">
+		<img src="/justtravel.jpg" alt="JustTravel Home Page" class="rounded-lg mb-2 w-[1000px] h-auto">
 		<span class="text-lg" style="font-family: 'Neue Montreal'">
 			JustTravel
 		</span>
@@ -71,7 +71,7 @@
 	<div class="w-[50%] my-5 h-px border-t-2 border-dotted"></div>
 	<!-- NaviLoo -->
 	<div class="py-3 text-center">
-		<img src="/naviloo.gif" alt="JustTravel Home Page" class="rounded-lg mb-2">
+		<img src="/naviloo.gif" alt="JustTravel Home Page" class="rounded-lg mb-2 w-[1000px] h-auto">
 		<span class="text-lg" style="font-family: 'Neue Montreal'">
 			NaviLoo
 		</span>
@@ -88,6 +88,28 @@
 		</div>
 		<p class="text-md" style="font-family: 'Neue Montreal'">
 			Waze-like single page application for finding the nearest public toilet near you
+		</p>
+	</div>
+	<div class="w-[50%] my-5 h-px border-t-2 border-dotted"></div>
+	<!-- SuccessSculptors -->
+	<div class="py-3 text-center">
+		<img src="/success_sculptors.jpg" alt="JustTravel Home Page" class="rounded-lg mb-2 w-[1000px] h-auto">
+		<span class="text-lg" style="font-family: 'Neue Montreal'">
+			SAP SuccessSculptors
+		</span>
+		<div class="flex flex-wrap justify-center">
+			<div class="m-2 p-2 bg-zinc-600 rounded-md text-white" style="font-family: 'Neue Montreal'">
+				NextJS
+			</div>
+			<div class="m-2 p-2 bg-zinc-600 rounded-md text-white" style="font-family: 'Neue Montreal'">
+				Django
+			</div>
+			<div class="m-2 p-2 bg-zinc-600 rounded-md text-white" style="font-family: 'Neue Montreal'">
+				Vercel
+			</div>
+		</div>
+		<p class="text-md" style="font-family: 'Neue Montreal'">
+			Prompt-based Interviewer tool with generative AI (GPT4o) and Joule AI integration
 		</p>
 	</div>
 	<!-- <div class="w-[50%] my-5 h-px border-t-2 border-dotted"></div>
